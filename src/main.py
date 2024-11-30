@@ -441,7 +441,7 @@ class WorkerThread(QThread):
     update_resource = pyqtSignal(SpellCheck)
     
     def run(self):
-        spellCheck = SpellCheck('BigramFinal.csv', 'UnigramFinal.csv')
+        spellCheck = SpellCheck('../assets/data/BigramFinal.csv', '../assets/data/UnigramFinal.csv')
         self.update_resource.emit(spellCheck)
     
     
@@ -449,7 +449,7 @@ class Main(qtw.QWidget):
     def __init__(self):
         super().__init__()
         
-        self.setWindowIcon(QtGui.QIcon('spellcheck.png'))
+        self.setWindowIcon(QtGui.QIcon('../assets/img/spellcheck.png'))
         self.setWindowTitle('Spell Checker')
         
         self.initLoadingUI()
@@ -474,7 +474,7 @@ class Main(qtw.QWidget):
     
     def initLoadingUI(self):
         self.setGeometry(100, 100, 320, 320)
-        self.movie = QtGui.QMovie('spinner_transparent.gif')
+        self.movie = QtGui.QMovie('../assets/img/spinner_transparent.gif')
         self.movieLabel = qtw.QLabel(self)
         self.movieLabel.setMovie(self.movie)
         self.movieLabel.resize(256, 256)
@@ -492,7 +492,7 @@ class Main(qtw.QWidget):
         self.movie.start()
     
     def initMainUI(self):
-        self.setWindowIcon(QtGui.QIcon('spellcheck.png'))
+        self.setWindowIcon(QtGui.QIcon('../assets/img/spellcheck.png'))
         self.setWindowTitle('Spell Checker')
         self.setGeometry(100, 100, 1500, 750)
         
@@ -809,7 +809,7 @@ class Main(qtw.QWidget):
         solArr = solText.split()
         
         self.diffDialog = QDialog(self)
-        self.diffDialog.setWindowIcon(QtGui.QIcon('spellcheck.png'))
+        self.diffDialog.setWindowIcon(QtGui.QIcon('../assets/img/spellcheck.png'))
         self.diffDialog.setWindowTitle('View Differences')
         self.diffDialog.setGeometry(100, 100, 950, 400)
         
@@ -1134,8 +1134,8 @@ class Main(qtw.QWidget):
         self.feedbackBox.setPlainText('')
     
     def storeBigramUnigram(self):
-        bigramName = 'BigramFinal.csv'
-        unigramName = 'UnigramFinal.csv'
+        bigramName = '../assets/data/BigramFinal.csv'
+        unigramName = '../assets/data/UnigramFinal.csv'
         
         self.storeBigram(bigramName)
         self.storeUnigram(unigramName)
